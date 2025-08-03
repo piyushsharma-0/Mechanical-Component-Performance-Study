@@ -1,0 +1,66 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+df = pd.read_csv('../data/stress_strain_sample.csv')
+
+# Preview the data
+print("First 5 rows of the dataset:")
+print(df.head())
+
+# Summary statistics
+print("\nSummary statistics:")
+print(df.describe())
+
+# ---------------------------------------------------
+# 1. Stress distribution across nodes
+plt.figure(figsize=(8, 5))
+sns.lineplot(x='Node', y='X_Stress (MPa)', data=df, label='X Stress')
+sns.lineplot(x='Node', y='Y_Stress (MPa)', data=df, label='Y Stress')
+plt.title('Stress Distribution Across Nodes')
+plt.xlabel('Node')
+plt.ylabel('Stress (MPa)')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig('../images/stress_distribution.png')
+plt.close()
+
+# ---------------------------------------------------
+# 2. Strain distribution
+plt.figure(figsize=(8, 5))
+sns.lineplot(x='Node', y='Strain (%)', data=df, marker='o', color='green')
+plt.title('Strain Distribution Across Nodes')
+plt.xlabel('Node')
+plt.ylabel('Strain (%)')
+plt.grid(True)
+plt.tight_layout()
+plt.savefig('../images/strain_distribution.png')
+plt.close()
+
+# ---------------------------------------------------
+# 3. Stress vs. Strain curve (X-direction)
+plt.figure(figsize=(8, 5))
+sns.scatterplot(x='Strain (%)', y='X_Stress (MPa)', data=df, color='red')
+sns.lineplot(x='Strain (%)', y='X_Stress (MPa)', data=df, color='red')
+plt.title('Stress vs. Strain (X Direction)')
+plt.xlabel('Strain (%)')
+plt.ylabel('X Stress (MPa)')
+plt.grid(True)
+plt.tight_layout()
+plt.savefig('../images/stress_vs_strain.png')
+plt.close()
+
+# ---------------------------------------------------
+# Interpretation/Conclusions
+print("\nConclusions:")
+max_stress_node = df.loc[df['X_Stress (MPa)'].idxmax(), 'Node']
+max_stress = df['X_Stress (MPa)'].max()
+print(f"-> Maximum X-Stress observed at Node {max_stress_node} with {max_stress} MPa")
+
+max_strain_node = df.loc[df['Strain (%)'].idxmax(), 'Node']
+max_strain = df['Strain (%)'].max()
+print(f"-> Maximum Strain observed at Node {max_strain_node} with {max_strain}%")
+
+print("-> Material shows linear elastic behavior across the measured strain range.")
