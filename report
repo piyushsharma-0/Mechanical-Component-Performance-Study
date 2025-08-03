@@ -1,0 +1,21 @@
+Author: Piyush Kumar Sharma
+Branch: B.Tech Mechanical Engineering
+Tools: ANSYS, SolidWorks, Python, Excel, Power BI
+
+Project Overview
+This project focuses on the performance analysis of a mechanical component using stress and
+strain data obtained from engineering simulations. The analysis was done to identify high-stress
+regions, understand failure points, and improve component design. Python was used to process and
+visualize the data, while ANSYS and SolidWorks were used to model and simulate the component.
+
+Tools and Methodology
+- ANSYS: For finite element analysis and stress simulation.
+- SolidWorks: For 3D modeling and structural design.
+- Python (pandas, matplotlib, seaborn): For data analysis and visualization.
+- Excel: For initial data review.
+- Power BI: For interactive dashboards (optional).
+
+Conclusion
+The study demonstrated how simulation data can be used in combination with programming tools to
+improve mechanical design decisions. The workflow also highlights the practical application of data
+analysis in engineering, enabling better understanding of component behavior under load.
